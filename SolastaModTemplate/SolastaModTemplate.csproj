@@ -60,12 +60,9 @@
       <HintPath>$(SolastaInstallDir)\Solasta_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Assembly-CSharp">
+    <Reference Include="SolastaModApi">
       <HintPath>$(SolastaInstallDir)\Mods\SolastaModApi\SolastaModApi.dll</HintPath>
       <Private>False</Private>
-    </Reference>
-    <Reference Include="SolastaModApi">
-      <HintPath>..\..\..\..\..\..\Games\Solasta Crown of the Magister\Mods\SolastaModApi\SolastaModApi.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
