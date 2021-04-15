@@ -1,0 +1,9 @@
+{
+  "SomeCategory/&SomeTerm": {
+    "English": "Mickey-Mouse was here"
+  },
+  "OtherCategory/&OtherTerm": {
+    "English": "The book is on the table",
+    "Portuguese": "O livro esta sobre a mesa"
+  }
+}

@@ -1,7 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.Reflection;
 using UnityModManagerNet;
 using HarmonyLib;
+using I2.Loc;
+using Newtonsoft.Json.Linq;
 using SolastaModApi;
 
 namespace SolastaModTemplate
@@ -26,6 +29,20 @@ namespace SolastaModTemplate
 
         public static UnityModManager.ModEntry.ModLogger logger;
         public static bool enabled;
+
+        public static void LoadTranslations()
+        {
+            var languageSourceData = LocalizationManager.Sources[0];
+            var translations = JObject.Parse(File.ReadAllText(UnityModManager.modsPath + @"/SolastaModApi/Translations.json"));
+            foreach (var translationKey in translations)
+            {
+                foreach (var translationLanguage in (JObject)translationKey.Value)
+                {
+                    var languageIndex = languageSourceData.GetLanguageIndex(translationLanguage.Key);
+                    languageSourceData.AddTerm(translationKey.Key).Languages[languageIndex] = translationLanguage.Value.ToString();
+                }
+            }
+        }
 
         static bool Load(UnityModManager.ModEntry modEntry)
         {
@@ -58,16 +75,14 @@ namespace SolastaModTemplate
         // ENTRY POINT IF YOU NEED SERVICE LOCATORS ACCESS
         static void ModBeforeDBReady()
         {
-            
+            LoadTranslations();
         }
 
         // ENTRY POINT IF YOU NEED SAFE DATABASE ACCESS
         static void ModAfterDBReady()
         {
-            // Use DatabaseHelper Class to faciliate access to blueprints
-
-            var cleric = DatabaseHelper.CharacterClassDefinitions.Cleric;
-            var skeleton = DatabaseHelper.MonsterDefinitions.Skeleton;
+            // var cleric = DatabaseHelper.CharacterClassDefinitions.Cleric;
+            // var skeleton = DatabaseHelper.MonsterDefinitions.Skeleton;
         }
     }
 }

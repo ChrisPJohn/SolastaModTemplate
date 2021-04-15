@@ -60,6 +60,16 @@
       <HintPath>$(SolastaInstallDir)\Solasta_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolastaInstallDir)\Solasta_Data\Managed\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="I2">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(SolastaInstallDir)\Solasta_Data\Managed\I2.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="SolastaModApi">
       <HintPath>$(SolastaInstallDir)\Mods\SolastaModApi\SolastaModApi.dll</HintPath>
       <Private>False</Private>
@@ -94,6 +104,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Info.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Translations.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
