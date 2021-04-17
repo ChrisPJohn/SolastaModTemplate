@@ -2,13 +2,33 @@
 
 A barebones template to create Mods in Solasta
 
+# How to Use this Template
+
+0. Decide on a "Desired Mod Name" (*DMN*)
+1. Download this REPO as ZIP
+2. Unzip the file
+3. Open SolastaModTemplate.csproj in a text editor
+	- Rename All SolastaModTemplate to your *DMM*
+	- Fix package url on line 8
+	- Fix repository url on line 9
+	- Fix Author on line 12
+	- Fix Version on line 17
+4. Open Info.json in a text editor
+	- Rename all SolastaModTemplate to your *DMM*
+5. Open Main.cs in a text editor
+	- Rename All SolastaModTemplate to your *DMM*
+6. Rename all files and folders that match SolastaModTemplate to your *DMN*
+	- SolastaModTemplate.sln >>> *DMM*.sln
+	- SolastaModTemplate.csproj >>> *DMM*.csproj
+	- SolastaModTemplate root folder and subfolder >>> *DMM*
+
 # How to Compile
 
 1. Install Visual Studio 2019
-2. Ensure .NET 4.7.2 is installed
-	- Download [Here](https://dotnet.microsoft.com/download/visual-studio-sdks) the current x86 SDK
-3. Ensure the SolastaInstallDir environment variable is configured to point to your Solasta game home folder
-4. Use "Install Debug" to have the API installed directly to your Mods folder
+2. Install .NET "Current" x86 SDK from [here](https://dotnet.microsoft.com/download/visual-studio-sdks)
+3. Create environment variable *SolastaInstallDir* and point it to your Solasta game home folder
+	- tip: search for "edit the system environment variables" on windows search bar
+4. Use "Install Debug" to have the Mod installed directly to your Game Mods folder
 
 # How to Install
 
