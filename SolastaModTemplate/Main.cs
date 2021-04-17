@@ -7,6 +7,7 @@ using I2.Loc;
 using Newtonsoft.Json.Linq;
 using System.Diagnostics;
 using SolastaModApi;
+using System.Collections.Generic;
 
 namespace SolastaModTemplate
 {
@@ -22,13 +23,25 @@ namespace SolastaModTemplate
         internal static void LoadTranslations()
         {
             var languageSourceData = LocalizationManager.Sources[0];
-            var translations = JObject.Parse(File.ReadAllText(UnityModManager.modsPath + @"/SolastaModTemplate/Translations.json"));
+            var translationsPath = Path.Combine(UnityModManager.modsPath, @"SolastaModTemplate\Translations.json");
+            var translations = JObject.Parse(File.ReadAllText(translationsPath));
             foreach (var translationKey in translations)
             {
                 foreach (var translationLanguage in (JObject)translationKey.Value)
                 {
-                    var languageIndex = languageSourceData.GetLanguageIndex(translationLanguage.Key);
-                    languageSourceData.AddTerm(translationKey.Key).Languages[languageIndex] = translationLanguage.Value.ToString();
+                    try
+                    {
+                        var languageIndex = languageSourceData.GetLanguageIndex(translationLanguage.Key);
+                        languageSourceData.AddTerm(translationKey.Key).Languages[languageIndex] = translationLanguage.Value.ToString();
+                    }
+                    catch (IndexOutOfRangeException e)
+                    {
+                        Error($"language {translationLanguage.Key} not installed");
+                    }
+                    catch (KeyNotFoundException e)
+                    {
+                        Error($"term {translationKey.Key} not found");
+                    }
                 }
             }
         }
