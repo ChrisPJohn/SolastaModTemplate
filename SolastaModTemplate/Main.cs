@@ -6,6 +6,7 @@ using HarmonyLib;
 using I2.Loc;
 using Newtonsoft.Json.Linq;
 using System.Diagnostics;
+using SolastaModApi;
 
 namespace SolastaModTemplate
 {
