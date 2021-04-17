@@ -45,10 +45,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<Reference Include="UnityEngine.InputLegacyModule">
 			<HintPath>$([System.IO.Path]::Combine($(SolastaInstallDir), 'Solasta_Data\Managed\UnityEngine.dll'))</HintPath>
 			<Private>false</Private>
@@ -68,6 +64,10 @@
 		<Reference Include="Assembly-CSharp">
 			<HintPath>$([System.IO.Path]::Combine($(SolastaInstallDir), 'Solasta_Data\Managed\Assembly-CSharp.dll'))</HintPath>
 			<Private>false</Private>
+		</Reference>
+		<Reference Include="NewtonSoft.Json">
+			<HintPath>$([System.IO.Path]::Combine($(SolastaInstallDir), 'Solasta_Data\Managed\NewtonSoft.Json.dll'))</HintPath>
+			<Private>False</Private>
 		</Reference>
 		<Reference Include="I2">
 			<HintPath>$([System.IO.Path]::Combine($(SolastaInstallDir), 'Solasta_Data\Managed\I2.dll'))</HintPath>

@@ -22,7 +22,7 @@ namespace SolastaModTemplate
         internal static void LoadTranslations()
         {
             var languageSourceData = LocalizationManager.Sources[0];
-            var translations = JObject.Parse(File.ReadAllText(UnityModManager.modsPath + @"/SolastaModApi/Translations.json"));
+            var translations = JObject.Parse(File.ReadAllText(UnityModManager.modsPath + @"/SolastaModTemplate/Translations.json"));
             foreach (var translationKey in translations)
             {
                 foreach (var translationLanguage in (JObject)translationKey.Value)
