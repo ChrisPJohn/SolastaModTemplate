@@ -6,8 +6,9 @@ A barebones template to create Mods in Solasta
 
 1. Install Visual Studio 2019
 2. Ensure .NET 4.7.2 is installed
-3. Ensure the SolastaInstallDir environment variable is configured to point to your Solasta_COTM install directory.
-4. Use "InstallDebug" to have the API installed directly to your Mods folder
+	- Download [Here](https://dotnet.microsoft.com/download/visual-studio-sdks) the current x86 SDK
+3. Ensure the SolastaInstallDir environment variable is configured to point to your Solasta game home folder
+4. Use "Install Debug" to have the API installed directly to your Mods folder
 
 # How to Install
 
