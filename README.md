@@ -5,14 +5,17 @@ A barebones template to create Mods in Solasta
 # How to Compile
 
 1. Install Visual Studio 2019
-2. Edit SolastaModTemplate.csproj and set your game folder on line 5
-3. Use "InstallDebug" to have it installed directly to your Mods folder
+2. Ensure .NET 4.7.2 is installed
+3. Ensure the SolastaInstallDir environment variable is configured to point to your Solasta_COTM install directory.
+4. Use "InstallDebug" to have the API installed directly to your Mods folder
 
 # How to Install
 
-1. Download and instal [Unity Mod Manager](https://www.nexusmods.com/site/mods/21)
+1. Download and install [Unity Mod Manager](https://www.nexusmods.com/site/mods/21)
 2. Execute Unity Mod Manager, Select Solasta, and Install
 3. Select Mods tab, drag and drop from releases
+
+NOTE Unity Mod Manager and this mod template make use of [Harmony](https://go.microsoft.com/fwlink/?linkid=874338)
 
 # How to Debug
 
@@ -35,3 +38,4 @@ player-connection-debug=1
 		* Paste *UnityPlayer.dll* and *WinPixEventRuntime.dll* from previous step
 
 You can now attach the Unity Debugger from Visual Studio 2019, Debug -> Attach Unity Debug
+

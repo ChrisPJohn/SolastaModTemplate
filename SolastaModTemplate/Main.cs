@@ -5,35 +5,24 @@ using UnityModManagerNet;
 using HarmonyLib;
 using I2.Loc;
 using Newtonsoft.Json.Linq;
+using System.Diagnostics;
 using SolastaModApi;
 
 namespace SolastaModTemplate
 {
     public class Main
     {
-        // [System.Diagnostics.Conditional("DEBUG")]
-        public static void Log(string msg)
-        {
-            if (logger != null) logger.Log(msg);
-        }
+        [Conditional("DEBUG")]
+        internal static void Log(string msg) => Logger.Log(msg);
 
-        public static void Error(Exception ex)
-        {
-            if (logger != null) logger.Error(ex.ToString());
-        }
+        internal static void Error(Exception ex) => Logger?.Error(ex.ToString());
+        internal static void Error(string msg) => Logger?.Error(msg);
+        internal static UnityModManager.ModEntry.ModLogger Logger { get; private set; }
 
-        public static void Error(string msg)
-        {
-            if (logger != null) logger.Error(msg);
-        }
-
-        public static UnityModManager.ModEntry.ModLogger logger;
-        public static bool enabled;
-
-        public static void LoadTranslations()
+        internal static void LoadTranslations()
         {
             var languageSourceData = LocalizationManager.Sources[0];
-            var translations = JObject.Parse(File.ReadAllText(UnityModManager.modsPath + @"/SolastaModApi/Translations.json"));
+            var translations = JObject.Parse(File.ReadAllText(UnityModManager.modsPath + @"/SolastaModTemplate/Translations.json"));
             foreach (var translationKey in translations)
             {
                 foreach (var translationLanguage in (JObject)translationKey.Value)
@@ -44,11 +33,11 @@ namespace SolastaModTemplate
             }
         }
 
-        static bool Load(UnityModManager.ModEntry modEntry)
+        internal static bool Load(UnityModManager.ModEntry modEntry)
         {
             try
             {
-                logger = modEntry.Logger;
+                Logger = modEntry.Logger;
 
                 ModBeforeDBReady();
 
@@ -60,26 +49,27 @@ namespace SolastaModTemplate
                 Error(ex);
                 throw;
             }
+
             return true;
         }
 
         [HarmonyPatch(typeof(MainMenuScreen), "RuntimeLoaded")]
-        static class MainMenuScreen_RuntimeLoaded_Patch
+        internal static class MainMenuScreen_RuntimeLoaded_Patch
         {
-            static void Postfix()
+            internal static void Postfix()
             {
                 ModAfterDBReady();
             }
         }
 
         // ENTRY POINT IF YOU NEED SERVICE LOCATORS ACCESS
-        static void ModBeforeDBReady()
+        internal static void ModBeforeDBReady()
         {
             LoadTranslations();
         }
 
         // ENTRY POINT IF YOU NEED SAFE DATABASE ACCESS
-        static void ModAfterDBReady()
+        internal static void ModAfterDBReady()
         {
             // var cleric = DatabaseHelper.CharacterClassDefinitions.Cleric;
             // var skeleton = DatabaseHelper.MonsterDefinitions.Skeleton;
