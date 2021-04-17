@@ -2,7 +2,7 @@
 	"Id": "SolastaModTemplate",
 	"DisplayName": "SolastaModTemplate",
 	"Author": "Zappastuff",
-	"Version": "0.0.1",
+	"Version": "0.0.2",
 	"ManagerVersion": "0.23.3",
 	"AssemblyName": "SolastaModTemplate.dll",
 	"EntryMethod": "SolastaModTemplate.Main.Load"
