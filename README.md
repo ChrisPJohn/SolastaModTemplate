@@ -4,23 +4,34 @@ A barebones template to create Mods in Solasta
 
 # How to Use this Template
 
-0. Decide on a "Desired Mod Name" (*DMN*)
-1. Download this REPO as ZIP
-2. Unzip the file
-3. Open SolastaModTemplate.csproj in a text editor
-	- Rename All SolastaModTemplate to your *DMM*
-	- Fix package url on line 8
-	- Fix repository url on line 9
-	- Fix Author on line 12
-	- Fix Version on line 17
-4. Open Info.json in a text editor
-	- Rename all SolastaModTemplate to your *DMM*
-5. Open Main.cs in a text editor
-	- Rename All SolastaModTemplate to your *DMM*
-6. Rename all files and folders that match SolastaModTemplate to your *DMN*
-	- SolastaModTemplate.sln >>> *DMM*.sln
-	- SolastaModTemplate.csproj >>> *DMM*.csproj
-	- SolastaModTemplate root folder and subfolder >>> *DMM*
+	* Automatic
+
+		0. Install Python 3.x
+		1. Install requests library (`pip install requests`)
+		2. Download [new_mod.py](https://github.com/SolastaMods/SolastaModTemplate/blob/main/new_mod.py)
+		3. Run `py new_mod.py <DESIRED_MOD_NAME>`
+
+	* Manual
+
+		0. Decide on a "Desired Mod Name" (*DMN*)
+		1. Download this REPO as ZIP
+		2. Unzip the file
+		3. Open SolastaModTemplate.sln in a text editor
+			- Rename All SolastaModTemplate to your *DMM*
+		4. Open SolastaModTemplate.csproj in a text editor
+			- Rename All SolastaModTemplate to your *DMM*
+			- Fix package url on line 8
+			- Fix repository url on line 9
+			- Fix Author on line 12
+			- Fix Version on line 17
+		5. Open Info.json in a text editor
+			- Rename all SolastaModTemplate to your *DMM*
+		6. Open Main.cs in a text editor
+			- Rename All SolastaModTemplate to your *DMM*
+		7. Rename all files and folders that match SolastaModTemplate to your *DMN*
+			- SolastaModTemplate.sln >>> *DMM*.sln
+			- SolastaModTemplate.csproj >>> *DMM*.csproj
+			- SolastaModTemplate root folder and subfolder >>> *DMM*
 
 # How to Compile
 
