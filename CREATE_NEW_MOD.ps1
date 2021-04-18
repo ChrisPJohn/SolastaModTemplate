@@ -1,3 +1,14 @@
+#
+# AUTHOR: ZappaStuff, 2021-APR
+#
+
+Function Get-Choice ($message) {
+    $choice = "n"
+    ""
+    while( -not (($choice=(Read-Host $MESSAGE)) -match "y|n")) {"Y or N ?"}
+    Return $choice
+}
+
 # get user input
 $ORG_NAME = "SolastaMods"
 $TEMPLATE = "SolastaModTemplate"
@@ -5,9 +16,8 @@ $GIT_REPO = Read-Host -Prompt "Enter your GitHub repository name"
 $GIT_USER = Read-Host -Prompt "Enter your GitHub username"
 
 # confirm destructive action
-$MESSAGE = "Existing $GIT_REPO folder will be deleted and recreated. CONTINUE"
-while( -not (($choice=(Read-Host $MESSAGE)) -match "y|n")) {"Y or N ?"}
-if($choice -match "n") 
+$MESSAGE = "Existing $GIT_REPO folder will be deleted and recreated. continue"
+if((Get-Choice($MESSAGE)) -match "n")
 {
     "INFO: Aborted"
     exit
@@ -15,7 +25,7 @@ if($choice -match "n")
 
 # download and unzip Solasta Mod Template to New Mod Name
 Invoke-RestMethod `
-    -Uri "https://github.com/SolastaMods/$TEMPLATE/archive/refs/heads/main.zip" `
+    -Uri "https://github.com/$ORG_NAME/$TEMPLATE/archive/refs/heads/main.zip" `
     -OutFile "$TEMPLATE.zip"
 Remove-Item -Recurse -Force "$TEMPLATE-main" -ErrorAction Ignore
 Expand-Archive -Path "$TEMPLATE.Zip" -DestinationPath .
@@ -40,25 +50,38 @@ Rename-Item "$GIT_REPO\$TEMPLATE" "$GIT_REPO"
 Rename-Item "$GIT_REPO\$TEMPLATE.sln" "$GIT_REPO.sln"
 Rename-Item "$GIT_REPO\README-TEMPLATE.md" "README.md"
 
-# first commit
+#
 cd "$GIT_REPO"
+
+# first commit
 git init
 git add .
 git commit -m "initial commit by SolastaMod"
 
+# add remote
+$MESSAGE = "Do you have a GIT SSH Key setup on this computer"
+if((Get-Choice($MESSAGE)) .match "y") 
+{
+   git remote add origin "git@github.com:$GIT_USER/$GIT_REPO.git"
+}
+else
+{
+    git remote add origin "https://github.com/$GIT_USER/$GIT_REPO.git"
+}
+
 # first push
 $MESSAGE = "Have you created your repo <$GIT_REPO> on GitHub"
-while( -not (($choice=(Read-Host $MESSAGE)) -match "y|n")) { "Y or N ?"}
-if($choice -match "n")
+if((Get-Choice($MESSAGE)) .match "y")
 {
-    "INFO: don't forget to create your repo and push your first commit with these commands"
+    git push --set-upstream origin master
+}
+else
+{
+    "don't forget to create your repo and push your first commit with:"
     ""
-    "git remote add origin 'https://github.com/$GIT_USER/$GIT_REPO.git'"
     "git push --set-upstream origin master"
     ""
-    cd ..
-    exit
 }
-git remote add origin "https://github.com/$GIT_USER/$GIT_REPO.git"
-git push --set-upstream origin master
+
+#
 cd ..
