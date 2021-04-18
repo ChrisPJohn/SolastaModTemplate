@@ -2,50 +2,27 @@
 
 A barebones template to create Mods in Solasta
 
-# How to Use this Template
+# How to create a new Project Folder from this Template
 
-	* Automatic
-
-		0. Install Python 3.x
-		1. Install requests library (`pip install requests`)
-		2. Download [new_mod.py](https://github.com/SolastaMods/SolastaModTemplate/blob/main/new_mod.py)
-		3. Run `py new_mod.py <DESIRED_MOD_NAME>`
-
-	* Manual
-
-		0. Decide on a "Desired Mod Name" (*DMN*)
-		1. Download this REPO as ZIP
-		2. Unzip the file
-		3. Open SolastaModTemplate.sln in a text editor
-			- Rename All SolastaModTemplate to your *DMM*
-		4. Open SolastaModTemplate.csproj in a text editor
-			- Rename All SolastaModTemplate to your *DMM*
-			- Fix package url on line 8
-			- Fix repository url on line 9
-			- Fix Author on line 12
-			- Fix Version on line 17
-		5. Open Info.json in a text editor
-			- Rename all SolastaModTemplate to your *DMM*
-		6. Open Main.cs in a text editor
-			- Rename All SolastaModTemplate to your *DMM*
-		7. Rename all files and folders that match SolastaModTemplate to your *DMN*
-			- SolastaModTemplate.sln >>> *DMM*.sln
-			- SolastaModTemplate.csproj >>> *DMM*.csproj
-			- SolastaModTemplate root folder and subfolder >>> *DMM*
+1. Install all required development pre-requisites:
+	- [Visual Studio 2019 Community Edition](https://visualstudio.microsoft.com/downloads/)
+	- [.NET "Current" x86 SDK](https://dotnet.microsoft.com/download/visual-studio-sdks)
+	- [GIT command line client](https://git-scm.com/downloads)
+2. Download [CREATE_NEW_MOD.ps1](https://github.com/SolastaMods/SolastaModTemplate/blob/main/CREATE_NEW_MOD.ps1)
+3. Manually create a new repository on your GitHub account
+4. Open a PowerShell console and run CREATE_NEW_MOD.ps1 at the base folder you would like your project folder to be created
+	- Enter a Mod Name (must match repository name created on step 3)
+	- Enter a Mod Description
+	- Enter your GitHub username
 
 # How to Compile
 
-1. Install Visual Studio 2019
-2. Install .NET "Current" x86 SDK from [here](https://dotnet.microsoft.com/download/visual-studio-sdks)
-3. Create environment variable *SolastaInstallDir* and point it to your Solasta game home folder
+1. Download and install [Unity Mod Manager (UMM)](https://www.nexusmods.com/site/mods/21)
+2. Execute UMM, Select Solasta, and Install
+3. Download and install [SolastaModApi](https://www.nexusmods.com/solastacrownofthemagister/mods/48) using UMM
+4. Create the environment variable *SolastaInstallDir* and point it to your Solasta game home folder
 	- tip: search for "edit the system environment variables" on windows search bar
-4. Use "Install Debug" to have the Mod installed directly to your Game Mods folder
-
-# How to Install
-
-1. Download and install [Unity Mod Manager](https://www.nexusmods.com/site/mods/21)
-2. Execute Unity Mod Manager, Select Solasta, and Install
-3. Select Mods tab, drag and drop from releases
+5. Use "Install Debug" to have the Mod installed directly to your Game Mods folder
 
 NOTE Unity Mod Manager and this mod template make use of [Harmony](https://go.microsoft.com/fwlink/?linkid=874338)
 
