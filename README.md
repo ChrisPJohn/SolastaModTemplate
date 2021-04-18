@@ -12,9 +12,8 @@ A barebones template to create Mods in Solasta
 		git config --global user.name "Your name here"
 		git config --global user.email "your_email@example.com"
 		```
-2. Download [CREATE_SOLASTA_MOD.ps1](https://raw.githubusercontent.com/SolastaMods/SolastaModTemplate/main/CREATE_SOLASTA_MOD.ps1)
-3. Manually create a new repository on your GitHub account
-4. Open a PowerShell console and run CREATE_NEW_MOD.ps1 at the base folder you would like your project folder to be created
+2. Manually create a new repository on your GitHub account
+3. Open a PowerShell console and run [CREATE_SOLASTA_MOD.ps1](https://raw.githubusercontent.com/SolastaMods/SolastaModTemplate/main/CREATE_SOLASTA_MOD.ps1) at the base folder you would like your project folder to be created
 	- Enter a Mod Name (must match repository name created on step 3)
 	- Enter your GitHub User Name
 
@@ -28,6 +27,17 @@ A barebones template to create Mods in Solasta
 5. Use "Install Release" or "Install Debug" to have the Mod installed directly to your Game Mods folder
 
 NOTE Unity Mod Manager and this mod template make use of [Harmony](https://go.microsoft.com/fwlink/?linkid=874338)
+
+# How to Publish
+
+1. Setup a [Nexus](www.nexus.com) account
+2. Update the Mod version on 2 files
+	- Info.json
+	- Repository.json
+3. Build "Install Release"
+4. Navigate to game Mods folder, right-click your Mod, Zip
+5. It's a good pratice to have the version on the Zip file you upload to Nexus. For example, MyMod-v0.0.1.zip
+6. Upload a new Content on Nexus and follow all publishing steps
 
 # How to Debug
 
