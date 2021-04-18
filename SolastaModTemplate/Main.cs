@@ -1,13 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using UnityModManagerNet;
 using HarmonyLib;
 using I2.Loc;
 using Newtonsoft.Json.Linq;
-using System.Diagnostics;
 using SolastaModApi;
-using System.Collections.Generic;
 
 namespace SolastaModTemplate
 {
@@ -15,7 +15,6 @@ namespace SolastaModTemplate
     {
         [Conditional("DEBUG")]
         internal static void Log(string msg) => Logger.Log(msg);
-
         internal static void Error(Exception ex) => Logger?.Error(ex.ToString());
         internal static void Error(string msg) => Logger?.Error(msg);
         internal static UnityModManager.ModEntry.ModLogger Logger { get; private set; }
@@ -34,11 +33,11 @@ namespace SolastaModTemplate
                         var languageIndex = languageSourceData.GetLanguageIndex(translationLanguage.Key);
                         languageSourceData.AddTerm(translationKey.Key).Languages[languageIndex] = translationLanguage.Value.ToString();
                     }
-                    catch (IndexOutOfRangeException e)
+                    catch (IndexOutOfRangeException)
                     {
                         Error($"language {translationLanguage.Key} not installed");
                     }
-                    catch (KeyNotFoundException e)
+                    catch (KeyNotFoundException)
                     {
                         Error($"term {translationKey.Key} not found");
                     }
