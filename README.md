@@ -12,7 +12,7 @@ A barebones template to create Mods in Solasta
 		git config --global user.name "Your name here"
 		git config --global user.email "your_email@example.com"
 		```
-2. Download [CREATE_NEW_MOD.ps1](https://raw.githubusercontent.com/SolastaMods/SolastaModTemplate/main/CREATE_NEW_MOD.ps1)
+2. Download [CREATE_SOLASTA_MOD.ps1](https://raw.githubusercontent.com/SolastaMods/SolastaModTemplate/main/CREATE_SOLASTA_MOD.ps1)
 3. Manually create a new repository on your GitHub account
 4. Open a PowerShell console and run CREATE_NEW_MOD.ps1 at the base folder you would like your project folder to be created
 	- Enter a Mod Name (must match repository name created on step 3)
