@@ -7,12 +7,16 @@ A barebones template to create Mods in Solasta
 1. Install all required development pre-requisites:
 	- [Visual Studio 2019 Community Edition](https://visualstudio.microsoft.com/downloads/)
 	- [.NET "Current" x86 SDK](https://dotnet.microsoft.com/download/visual-studio-sdks)
-	- [GIT command line client](https://git-scm.com/downloads)
+	- A correctly configured [GIT command line](https://git-scm.com/downloads):
+		```
+		git config --global user.name "Your name here"
+		git config --global user.email "your_email@example.com"
+		```
 2. Download [CREATE_NEW_MOD.ps1](https://raw.githubusercontent.com/SolastaMods/SolastaModTemplate/main/CREATE_NEW_MOD.ps1)
 3. Manually create a new repository on your GitHub account
 4. Open a PowerShell console and run CREATE_NEW_MOD.ps1 at the base folder you would like your project folder to be created
 	- Enter a Mod Name (must match repository name created on step 3)
-	- Enter your GitHub username
+	- Enter your GitHub User Name
 
 # How to Compile
 
@@ -40,8 +44,8 @@ NOTE Unity Mod Manager and this mod template make use of [Harmony](https://go.mi
 4. Open Downloads folder
 	* Right-click UnitySetup64-2019.4.1f1.exe, 7Zip -> Extract Here
 	* Navigate to Editor\Data\PlaybackEngines\windowsstandalonesupport\Variations\win64_development_mono
-		* Copy *UnityPlayer.dll* and *WinPixEventRuntime.dll*
+		* Copy *UnityPlayer.dll* and *WinPixEventRuntime.dll* to clipboard
 	* Navigate to the Solasta game folder
 		* Rename *UnityPlayer.dll* to *UnityPlayer.dll.original*
-		* Paste *UnityPlayer.dll* and *WinPixEventRuntime.dll* from previous step
+		* Paste *UnityPlayer.dll* and *WinPixEventRuntime.dll* from clipboard
 5. You can now attach the Unity Debugger from Visual Studio 2019, Debug -> Attach Unity Debug
