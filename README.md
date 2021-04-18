@@ -8,7 +8,7 @@ A barebones template to create Mods in Solasta
 	- [Visual Studio 2019 Community Edition](https://visualstudio.microsoft.com/downloads/)
 	- [.NET "Current" x86 SDK](https://dotnet.microsoft.com/download/visual-studio-sdks)
 	- [GIT command line client](https://git-scm.com/downloads)
-2. Download [CREATE_NEW_MOD.ps1](https://github.com/SolastaMods/SolastaModTemplate/blob/main/CREATE_NEW_MOD.ps1)
+2. Download [CREATE_NEW_MOD.ps1](https://raw.githubusercontent.com/SolastaMods/SolastaModTemplate/main/CREATE_NEW_MOD.ps1)
 3. Manually create a new repository on your GitHub account
 4. Open a PowerShell console and run CREATE_NEW_MOD.ps1 at the base folder you would like your project folder to be created
 	- Enter a Mod Name (must match repository name created on step 3)

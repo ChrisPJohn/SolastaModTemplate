@@ -18,7 +18,7 @@ Remove-Item -Recurse -Force "$MOD_NAME" -ErrorAction Ignore
 Rename-Item "$TEMPLATE-main" "$MOD_NAME"
 
 # replace all SolastaModTemplate with ModName on all files
-$FILES = Get-ChildItem –Path ".\$MOD_NAME" -Recurse -File | select -ExpandProperty FullName
+$FILES = Get-ChildItem -Path ".\$MOD_NAME" -Recurse -File | select -ExpandProperty FullName
 foreach($FILE in $FILES)
 {
     ((Get-Content -path $FILE -Raw) -replace $TEMPLATE, $MOD_NAME) | Set-Content -Path $FILE
