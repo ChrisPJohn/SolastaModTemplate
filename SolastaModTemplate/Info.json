@@ -4,6 +4,9 @@
 	"Author": "SolastaMods",
 	"Version": "0.0.1",
 	"ManagerVersion": "0.23.3",
+	"Requirements": ["SolastaModApi"],
 	"AssemblyName": "SolastaModTemplate.dll",
-	"EntryMethod": "SolastaModTemplate.Main.Load"
+	"EntryMethod": "SolastaModTemplate.Main.Load",
+	"Repository": "https://raw.githubusercontent.com/SolastaMods/SolastaModTemplate/main/SolastaModTemplate/Repository.json",
+	"HomePage": "https://www.nexusmods.com/solastacrownofthemagister/mods/##"
 }
