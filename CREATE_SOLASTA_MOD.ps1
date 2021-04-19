@@ -43,7 +43,7 @@ foreach($FILE in $FILES)
 
 # rename / delete files
 Remove-Item "$GIT_REPO\README.md"
-Remove-Item "$GIT_REPO\CREATE_NEW_MOD.PS1"
+Remove-Item "$GIT_REPO\CREATE_SOLASTA_MOD.PS1"
 
 Rename-Item "$GIT_REPO\$TEMPLATE\$TEMPLATE.csproj" "$GIT_REPO.csproj"
 Rename-Item "$GIT_REPO\$TEMPLATE" "$GIT_REPO"
