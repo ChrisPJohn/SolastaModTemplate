@@ -3,7 +3,7 @@
 	"DisplayName": "SolastaModTemplate",
 	"Author": "SolastaMods",
 	"Version": "0.0.1",
-	"ManagerVersion": "0.23.3",
+	"ManagerVersion": "0.23.4",
 	"Requirements": ["SolastaModApi"],
 	"AssemblyName": "SolastaModTemplate.dll",
 	"EntryMethod": "SolastaModTemplate.Main.Load",
