@@ -1,6 +1,10 @@
 {
 	"Releases":
 	[
-		{"Id": "SolastaModTemplate", "Version": "0.0.1"}
+		{
+			"Id": "SolastaModTemplate",
+			"Version": "0.0.1",
+			"DownloadUrl": "https://github.com/SolastaMods/SolastaModTemplate/releases/download/V0.0.1/SolastaModTemplate.zip"
+		}
 	]
 }
