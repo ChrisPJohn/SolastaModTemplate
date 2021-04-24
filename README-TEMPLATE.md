@@ -36,3 +36,22 @@ NOTE Unity Mod Manager and this mod template make use of [Harmony](https://go.mi
 		* Rename *UnityPlayer.dll* to *UnityPlayer.dll.original*
 		* Paste *UnityPlayer.dll* and *WinPixEventRuntime.dll* from clipboard
 5. You can now attach the Unity Debugger from Visual Studio 2019, Debug -> Attach Unity Debug
+
+# How to publish (first time)
+
+1. Create a new repo on GitHub on Browser UI
+2. Run CREATE_SOLASTA_MOD.PS1 on my computer to get template and first commit to Repo
+3. Develop / Test the Mod
+4. Create new hidden Mod on Nexus page with minimum required entries. Get Nexus URL
+5. Edit version entries on CSPROJ, Info.json, and Repository.json (I always start with 0.0.1)
+6. Edit Info.json and fix Nexus URL
+7. Release Mod on GitHub using Vx.y.z as TAG/RELEASE convention (I always start with V0.0.1)
+8. Update Nexus page with download file and set mod to unhidden
+
+# How to publish (update)
+
+1. Develop / Test the Mod
+2. Edit version entries on CSPROJ, Info.json, and Repository.json
+3. Update DownloadURL on Repository.json
+4. Release Mod on GitHub using Vx.y.z as TAG/RELEASE convention
+5. Update Nexus page with new release
