@@ -60,7 +60,7 @@ git commit -m "initial commit by SolastaMod"
 
 # add remote
 $MESSAGE = "Do you have a GIT SSH Key setup on this computer"
-if((Get-Choice($MESSAGE)) .match "y") 
+if((Get-Choice($MESSAGE)) -match "y") 
 {
    git remote add origin "git@github.com:$GIT_USER/$GIT_REPO.git"
 }
@@ -71,7 +71,7 @@ else
 
 # first push
 $MESSAGE = "Have you created your repo <$GIT_REPO> on GitHub"
-if((Get-Choice($MESSAGE)) .match "y")
+if((Get-Choice($MESSAGE)) -match "y")
 {
     git push --set-upstream origin master
 }
