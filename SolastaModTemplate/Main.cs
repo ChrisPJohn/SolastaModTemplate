@@ -23,23 +23,26 @@ namespace SolastaModTemplate
         {
             var languageSourceData = LocalizationManager.Sources[0];
             var translationsPath = Path.Combine(UnityModManager.modsPath, @"SolastaModTemplate\Translations.json");
-            var translations = JObject.Parse(File.ReadAllText(translationsPath));
-            foreach (var translationKey in translations)
+            if (File.Exists(translationsPath))
             {
-                foreach (var translationLanguage in (JObject)translationKey.Value)
+                var translations = JObject.Parse(File.ReadAllText(translationsPath));
+                foreach (var translationKey in translations)
                 {
-                    try
+                    foreach (var translationLanguage in (JObject)translationKey.Value)
                     {
-                        var languageIndex = languageSourceData.GetLanguageIndex(translationLanguage.Key);
-                        languageSourceData.AddTerm(translationKey.Key).Languages[languageIndex] = translationLanguage.Value.ToString();
-                    }
-                    catch (IndexOutOfRangeException)
-                    {
-                        Error($"language {translationLanguage.Key} not installed");
-                    }
-                    catch (KeyNotFoundException)
-                    {
-                        Error($"term {translationKey.Key} not found");
+                        try
+                        {
+                            var languageIndex = languageSourceData.GetLanguageIndex(translationLanguage.Key);
+                            languageSourceData.AddTerm(translationKey.Key).Languages[languageIndex] = translationLanguage.Value.ToString();
+                        }
+                        catch (IndexOutOfRangeException)
+                        {
+                            Error($"language {translationLanguage.Key} not installed");
+                        }
+                        catch (KeyNotFoundException)
+                        {
+                            Error($"term {translationKey.Key} not found");
+                        }
                     }
                 }
             }
