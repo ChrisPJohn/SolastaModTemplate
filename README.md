@@ -50,9 +50,9 @@ NOTE Unity Mod Manager and this mod template make use of [Harmony](https://go.mi
 # How to Debug
 
 1. Open Solasta game folder
-	* Rename Solasta.exe to Solasta.exe.original
 	* Rename UnityPlayer.dll to UnityPlayer.dll.original
-	* Add below entries to *Solasta_Data\boot.config*:
+	* Rename WinPixEventRuntime.dll to WinPixEventRuntime.dll.original (if it exists)
+	* Change / Add below entries to *Solasta_Data\boot.config* (ensure there are no dups):
 		```
 		wait-for-managed-debugger=1
 		player-connection-debug=1
