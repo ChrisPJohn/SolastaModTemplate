@@ -12,7 +12,10 @@ Function Get-Choice ($message) {
 # get user input
 $ORG_NAME = "SolastaMods"
 $TEMPLATE = "SolastaModTemplate"
-$GIT_REPO = Read-Host -Prompt "Enter your GitHub repository name"
+$GIT_REPO = ""
+while ($GIT_REPO -cnotmatch "^[a-zA-Z]\w*$") {
+    $GIT_REPO = Read-Host -Prompt "Enter your GitHub repository name (must start with a letter and only contain letters, numbers and underscore)"
+}
 $GIT_USER = Read-Host -Prompt "Enter your GitHub username"
 
 # confirm destructive action
