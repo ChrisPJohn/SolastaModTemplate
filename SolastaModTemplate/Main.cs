@@ -68,8 +68,8 @@ namespace SolastaModTemplate
             return true;
         }
 
-        [HarmonyPatch(typeof(MainMenuScreen), "RuntimeLoaded")]
-        internal static class MainMenuScreen_RuntimeLoaded_Patch
+        [HarmonyPatch(typeof(GameManager), "BindPostDatabase")]
+        internal static class GameManager_BindPostDatabase_Patch
         {
             internal static void Postfix()
             {
