@@ -21,30 +21,30 @@ namespace SolastaModTemplate
 
         internal static void LoadTranslations()
         {
-            var languageSourceData = LocalizationManager.Sources[0];
-            var translationsPath = Path.Combine(UnityModManager.modsPath, @"SolastaModTemplate\Translations.json");
-            if (File.Exists(translationsPath))
+            DirectoryInfo directoryInfo = new DirectoryInfo($@"{UnityModManager.modsPath}/SolastaModTemplate");
+            FileInfo[] files = directoryInfo.GetFiles($"Translations-??.txt");
+
+            foreach (var file in files)
             {
-                var translations = JObject.Parse(File.ReadAllText(translationsPath));
-                foreach (var translationKey in translations)
-                {
-                    foreach (var translationLanguage in (JObject)translationKey.Value)
+                var filename = $@"{UnityModManager.modsPath}/SolastaModTemplate/{file.Name}";
+                var code = file.Name.Substring(13, 2);
+                var languageSourceData = LocalizationManager.Sources[0];
+                var languageIndex = languageSourceData.GetLanguageIndexFromCode(code);
+
+                if (languageIndex < 0)
+                    Main.Error($"language {code} not currently loaded.");
+                else
+                    using (var sr = new StreamReader(filename))
                     {
-                        try
+                        String line;
+                        while ((line = sr.ReadLine()) != null)
                         {
-                            var languageIndex = languageSourceData.GetLanguageIndex(translationLanguage.Key);
-                            languageSourceData.AddTerm(translationKey.Key).Languages[languageIndex] = translationLanguage.Value.ToString();
-                        }
-                        catch (IndexOutOfRangeException)
-                        {
-                            Error($"language {translationLanguage.Key} not installed");
-                        }
-                        catch (KeyNotFoundException)
-                        {
-                            Error($"term {translationKey.Key} not found");
+                            var splitted = line.Split(new[] { '\t', ' ' }, 2);
+                            var term = splitted[0];
+                            var text = splitted[1];
+                            languageSourceData.AddTerm(term).Languages[languageIndex] = text;
                         }
                     }
-                }
             }
         }
 
