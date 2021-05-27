@@ -1,0 +1,2 @@
+SolastaModTemplate/&SomeTerm    I'm some translation term
+SolastaModTemplate/&OtherTerm	I'm another translation term
