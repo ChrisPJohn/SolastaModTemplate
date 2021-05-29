@@ -2,7 +2,7 @@
 
 namespace SolastaModTemplate.Patches
 {
-    class BindPostDatabase
+    class GameManagerPatcher
     {
         [HarmonyPatch(typeof(GameManager), "BindPostDatabase")]
         internal static class GameManager_BindPostDatabase_Patch
