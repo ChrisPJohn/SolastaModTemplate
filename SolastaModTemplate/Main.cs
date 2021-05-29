@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using UnityModManagerNet;
 using HarmonyLib;
 using I2.Loc;
-using Newtonsoft.Json.Linq;
 using SolastaModApi;
 
 namespace SolastaModTemplate
@@ -54,7 +52,7 @@ namespace SolastaModTemplate
             {
                 Logger = modEntry.Logger;
 
-                ModBeforeDBReady();
+                LoadTranslations();
 
                 var harmony = new Harmony(modEntry.Info.Id);
                 harmony.PatchAll(Assembly.GetExecutingAssembly());
@@ -68,26 +66,24 @@ namespace SolastaModTemplate
             return true;
         }
 
-        [HarmonyPatch(typeof(GameManager), "BindPostDatabase")]
-        internal static class GameManager_BindPostDatabase_Patch
+        internal static void ModEntryPoint()
         {
-            internal static void Postfix()
-            {
-                ModAfterDBReady();
-            }
-        }
+            // example: use the ModApi to get a skeleton blueprint
+            //
+            var skeleton = DatabaseHelper.MonsterDefinitions.Skeleton;
 
-        // ENTRY POINT IF YOU NEED SERVICE LOCATORS ACCESS
-        internal static void ModBeforeDBReady()
-        {
-            LoadTranslations();
-        }
-
-        // ENTRY POINT IF YOU NEED SAFE DATABASE ACCESS
-        internal static void ModAfterDBReady()
-        {
-            // var cleric = DatabaseHelper.CharacterClassDefinitions.Cleric;
-            // var skeleton = DatabaseHelper.MonsterDefinitions.Skeleton;
+            // example: how to add TEXTS to the game right
+            //
+            // . almost every game blueprint has a GuiPresentation attribute
+            // . GuiPresentation has a Title and a Description
+            // . Create an entry in Translations-en.txt for those (tab separated)
+            // . Refer to those entries when assigning values to these attributes
+            //
+            // . DON'T FORGET TO CLEAN UP THIS EXAMPLE AND Translations-en.txt file
+            // . ugly things will happen if you don't
+            //
+            skeleton.GuiPresentation.Title = "SolastaModTemplate/&FancySkeletonTitle";
+            skeleton.GuiPresentation.Description = "SolastaModTemplate/&FancySkeletonDescription";
         }
     }
 }

@@ -1,2 +1,2 @@
-SolastaModTemplate/&SomeTerm    I'm some translation term
-SolastaModTemplate/&OtherTerm	I'm another translation term
+SolastaModTemplate/&FancySkeletonTitle	Fancy Skeleton
+SolastaModTemplate/&FancySkeletonDescription	I'm a fancy skeleton
