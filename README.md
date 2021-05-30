@@ -12,9 +12,8 @@ A barebones template to create Mods in Solasta
 		git config --global user.name "Your name here"
 		git config --global user.email "your_email@example.com"
 		```
-2. Download [CREATE_NEW_MOD.ps1](https://raw.githubusercontent.com/SolastaMods/SolastaModTemplate/main/CREATE_NEW_MOD.ps1)
-3. Manually create a new repository on your GitHub account
-4. Open a PowerShell console and run CREATE_NEW_MOD.ps1 at the base folder you would like your project folder to be created
+2. Manually create a new repository on your GitHub account
+3. Open a PowerShell console and run [CREATE_SOLASTA_MOD.ps1](https://raw.githubusercontent.com/SolastaMods/SolastaModTemplate/main/CREATE_SOLASTA_MOD.ps1) at the base folder you would like your project folder to be created
 	- Enter a Mod Name (must match repository name created on step 3)
 	- Enter your GitHub User Name
 
@@ -29,12 +28,31 @@ A barebones template to create Mods in Solasta
 
 NOTE Unity Mod Manager and this mod template make use of [Harmony](https://go.microsoft.com/fwlink/?linkid=874338)
 
+# How to publish (first time)
+
+1. Create a new repo on GitHub on Browser UI
+2. Run CREATE_SOLASTA_MOD.PS1 on my computer to get template and first commit to Repo
+3. Develop / Test the Mod
+4. Create new hidden Mod on Nexus page with minimum required entries. Get Nexus URL
+5. Edit version entries on CSPROJ, Info.json, and Repository.json (I always start with 0.0.1)
+6. Edit Info.json and fix Nexus URL
+7. Release Mod on GitHub using Vx.y.z as TAG/RELEASE convention (I always start with V0.0.1)
+8. Update Nexus page with download file and set mod to unhidden
+
+# How to publish (update)
+
+1. Develop / Test the Mod
+2. Edit version entries on CSPROJ, Info.json, and Repository.json
+3. Update DownloadURL on Repository.json
+4. Release Mod on GitHub using Vx.y.z as TAG/RELEASE convention
+5. Update Nexus page with new release
+
 # How to Debug
 
 1. Open Solasta game folder
-	* Rename Solasta.exe to Solasta.exe.original
 	* Rename UnityPlayer.dll to UnityPlayer.dll.original
-	* Add below entries to *Solasta_Data\boot.config*:
+	* Rename WinPixEventRuntime.dll to WinPixEventRuntime.dll.original (if it exists)
+	* Change / Add below entries to *Solasta_Data\boot.config* (ensure there are no dups):
 		```
 		wait-for-managed-debugger=1
 		player-connection-debug=1

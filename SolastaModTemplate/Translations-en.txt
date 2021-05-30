@@ -1,0 +1,2 @@
+SolastaModTemplate/&FancySkeletonTitle	Fancy Skeleton
+SolastaModTemplate/&FancySkeletonDescription	I'm a fancy skeleton
