@@ -1,6 +1,10 @@
 # Solasta Mod Template
 
-A barebones template to create Mods in Solasta
+A barebones template to create Mods in Solasta.
+
+	- Leverages [ModMaker](https://github.com/cabarius/WrathModMaker):
+		- Thanks Hsinyu Chan for developing it for Pathfinder: Kingmaker
+		- Thanks Narnia for improving it for Pathfinder: WoTR
 
 # How to create a new Project from this Template
 
