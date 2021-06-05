@@ -6,6 +6,8 @@ using UnityModManagerNet;
 using HarmonyLib;
 using I2.Loc;
 using SolastaModApi;
+using ModMaker;
+using ModMaker.Utility;
 
 namespace SolastaModTemplate
 {
@@ -69,6 +71,8 @@ namespace SolastaModTemplate
 
                 LoadTranslations();
 
+                modEntry.OnGUI = OnGUI;
+
                 var harmony = new Harmony(modEntry.Info.Id);
                 harmony.PatchAll(Assembly.GetExecutingAssembly());
             }
@@ -99,6 +103,25 @@ namespace SolastaModTemplate
             //
             skeleton.GuiPresentation.Title = "SolastaModTemplate/&FancySkeletonTitle";
             skeleton.GuiPresentation.Description = "SolastaModTemplate/&FancySkeletonDescription";
+        }
+
+        static void OnGUI(UnityModManager.ModEntry modEntry)
+        {
+            // example: basic UI
+            // read https://github.com/cabarius/ToyBox for better examples
+            // 
+            UI.Section("SolastaModTemplate", () =>
+            {
+                UI.HStack("Sample Stack A", 4,
+                    () => { UI.ActionButton("Button 1", () => { /* do something here */ }); },
+                    () => { UI.ActionButton("Button 2", () => { /* do something here */ }); }
+                 );
+                UI.Space(10);
+                UI.HStack("Sample Stack B", 4,
+                    () => { UI.ActionButton("Button 3", () => { /* do something here */ }); },
+                    () => { UI.ActionButton("Button 4", () => { /* do something here */ }); }
+                 );
+            });
         }
     }
 }
