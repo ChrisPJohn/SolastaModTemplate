@@ -3,24 +3,27 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolastaModTemplate", "SolastaModTemplate\SolastaModTemplate.csproj", "{2CAEA425-CE96-4E2A-8248-FD55675B20F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolastaModTemplate", "SolastaModTemplate\SolastaModTemplate.csproj", "{2CAEA425-CE96-4E2A-8248-FD55675B20F6}"
 EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		ModMaker\ModMaker.projitems*{2caea425-ce96-4e2a-8248-fd55675b20f6}*SharedItemsImports = 5
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
 		Debug Install|Any CPU = Debug Install|Any CPU
-		Release|Any CPU = Release|Any CPU
+		Debug|Any CPU = Debug|Any CPU
 		Release Install|Any CPU = Release Install|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2CAEA425-CE96-4E2A-8248-FD55675B20F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2CAEA425-CE96-4E2A-8248-FD55675B20F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CAEA425-CE96-4E2A-8248-FD55675B20F6}.Debug Install|Any CPU.ActiveCfg = Debug Install|Any CPU
 		{2CAEA425-CE96-4E2A-8248-FD55675B20F6}.Debug Install|Any CPU.Build.0 = Debug Install|Any CPU
-		{2CAEA425-CE96-4E2A-8248-FD55675B20F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2CAEA425-CE96-4E2A-8248-FD55675B20F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CAEA425-CE96-4E2A-8248-FD55675B20F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CAEA425-CE96-4E2A-8248-FD55675B20F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CAEA425-CE96-4E2A-8248-FD55675B20F6}.Release Install|Any CPU.ActiveCfg = Release Install|Any CPU
 		{2CAEA425-CE96-4E2A-8248-FD55675B20F6}.Release Install|Any CPU.Build.0 = Release Install|Any CPU
+		{2CAEA425-CE96-4E2A-8248-FD55675B20F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CAEA425-CE96-4E2A-8248-FD55675B20F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

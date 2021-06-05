@@ -44,6 +44,8 @@
 		<DefineConstants>TRACE</DefineConstants>
 	</PropertyGroup>
 
+	<Import Project="..\ModMaker\ModMaker.projitems" Label="Shared" />
+
 	<ItemGroup>
 		<Reference Include="Unity.Addressables">
 			<HintPath>$([System.IO.Path]::Combine($(SolastaInstallDir), 'Solasta_Data\Managed\Unity.Addressables.dll'))</HintPath>
