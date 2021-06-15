@@ -4,8 +4,9 @@ using System.IO;
 using System.Reflection;
 using UnityModManagerNet;
 using HarmonyLib;
-using I2.Loc;
 using SolastaModApi;
+using ModKit;
+using ModKit.Utility;
 
 namespace SolastaModTemplate
 {
@@ -19,47 +20,9 @@ namespace SolastaModTemplate
         internal static void Error(string msg) => Logger?.Error(msg);
         internal static void Warning(string msg) => Logger?.Warning(msg);
         internal static UnityModManager.ModEntry.ModLogger Logger { get; private set; }
-
-        internal static void LoadTranslations()
-        {
-            DirectoryInfo directoryInfo = new DirectoryInfo(MOD_FOLDER);
-            FileInfo[] files = directoryInfo.GetFiles($"Translations-??.txt");
-
-            foreach (var file in files)
-            {
-                var filename = Path.Combine(MOD_FOLDER, file.Name);
-                var code = file.Name.Substring(13, 2);
-                var languageSourceData = LocalizationManager.Sources[0];
-                var languageIndex = languageSourceData.GetLanguageIndexFromCode(code);
-
-                if (languageIndex < 0)
-                    Error($"language {code} not currently loaded.");
-                else
-                    using (var sr = new StreamReader(filename))
-                    {
-                        String line, term, text;
-                        while ((line = sr.ReadLine()) != null)
-                        {
-                            try
-                            {
-                                var splitted = line.Split(new[] { '\t', ' ' }, 2);
-                                term = splitted[0];
-                                text = splitted[1];
-                            } catch
-                            {
-                                Error($"invalid translation line \"{line}\".");
-                                continue;
-                            }
-                            if (languageSourceData.ContainsTerm(term))
-                            {
-                                languageSourceData.RemoveTerm(term);
-                                Warning($"official game term {term} was overwritten with \"{text}\"");
-                            }
-                            languageSourceData.AddTerm(term).Languages[languageIndex] = text;
-                        }
-                    }
-            }
-        }
+        internal static ModManager<Core, Settings> Mod;
+        internal static MenuManager Menu;
+        internal static Settings Settings { get { return Mod.Settings; } }
 
         internal static bool Load(UnityModManager.ModEntry modEntry)
         {
@@ -67,7 +30,11 @@ namespace SolastaModTemplate
             {
                 Logger = modEntry.Logger;
 
-                LoadTranslations();
+                Mod = new ModManager<Core, Settings>();
+                Menu = new MenuManager();
+                modEntry.OnToggle = OnToggle;
+
+                Translations.Load(MOD_FOLDER);
 
                 var harmony = new Harmony(modEntry.Info.Id);
                 harmony.PatchAll(Assembly.GetExecutingAssembly());
@@ -81,7 +48,24 @@ namespace SolastaModTemplate
             return true;
         }
 
-        internal static void ModEntryPoint()
+        static bool OnToggle(UnityModManager.ModEntry modEntry, bool enabled)
+        {
+            if (enabled)
+            {
+                Assembly assembly = Assembly.GetExecutingAssembly();
+                Mod.Enable(modEntry, assembly);
+                Menu.Enable(modEntry, assembly);
+            }
+            else
+            {
+                Menu.Disable(modEntry);
+                Mod.Disable(modEntry, false);
+                ReflectionCache.Clear();
+            }
+            return true;
+        }
+
+        internal static void OnDatabaseReady()
         {
             // example: use the ModApi to get a skeleton blueprint
             //
