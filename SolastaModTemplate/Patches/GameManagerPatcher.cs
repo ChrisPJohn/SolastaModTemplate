@@ -9,7 +9,7 @@ namespace SolastaModTemplate.Patches
         {
             internal static void Postfix()
             {
-                Main.ModEntryPoint();
+                Main.OnGameReady();
             }
         }
     }
