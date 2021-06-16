@@ -3,7 +3,8 @@ using ModKit;
 using static SolastaModTemplate.Main;
 
 namespace SolastaModTemplate.Menus.Viewers
-{    public class SampleModMenu1 : IMenuSelectablePage
+{
+    public class SampleModMenu1 : IMenuSelectablePage
     {
         public string Name => "Sample Menu 1";
 
