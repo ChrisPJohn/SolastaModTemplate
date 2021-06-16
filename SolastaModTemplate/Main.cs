@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using UnityModManagerNet;
-using HarmonyLib;
 using SolastaModApi;
 using ModKit;
 using ModKit.Utility;
@@ -35,9 +34,6 @@ namespace SolastaModTemplate
                 modEntry.OnToggle = OnToggle;
 
                 Translations.Load(MOD_FOLDER);
-
-                var harmony = new Harmony(modEntry.Info.Id);
-                harmony.PatchAll(Assembly.GetExecutingAssembly());
             }
             catch (Exception ex)
             {
@@ -65,7 +61,7 @@ namespace SolastaModTemplate
             return true;
         }
 
-        internal static void OnDatabaseReady()
+        internal static void OnGameReady()
         {
             // example: use the ModApi to get a skeleton blueprint
             //

@@ -13,8 +13,8 @@ namespace SolastaModTemplate.Menus.Viewers
         {
             if (Mod == null || !Mod.Enabled) return;
 
-            UI.Toggle("Toggle Me 1", ref Main.Settings.toggleTest3, 0, UI.AutoWidth());
-            UI.Toggle("Toggle Me 2", ref Main.Settings.toggleTest4, 0, UI.AutoWidth());
+            UI.Toggle("Toggle Me 3", ref Main.Settings.toggleTest3, 0, UI.AutoWidth());
+            UI.Toggle("Toggle Me 4", ref Main.Settings.toggleTest4, 0, UI.AutoWidth());
         }
     }
 }
