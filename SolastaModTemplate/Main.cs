@@ -11,35 +11,50 @@ namespace SolastaModTemplate
 {
     public class Main
     {
+        public static readonly string MOD_FOLDER = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
         [Conditional("DEBUG")]
         internal static void Log(string msg) => Logger.Log(msg);
         internal static void Error(Exception ex) => Logger?.Error(ex.ToString());
         internal static void Error(string msg) => Logger?.Error(msg);
+        internal static void Warning(string msg) => Logger?.Warning(msg);
         internal static UnityModManager.ModEntry.ModLogger Logger { get; private set; }
 
         internal static void LoadTranslations()
         {
-            DirectoryInfo directoryInfo = new DirectoryInfo($@"{UnityModManager.modsPath}/SolastaModTemplate");
+            DirectoryInfo directoryInfo = new DirectoryInfo(MOD_FOLDER);
             FileInfo[] files = directoryInfo.GetFiles($"Translations-??.txt");
 
             foreach (var file in files)
             {
-                var filename = $@"{UnityModManager.modsPath}/SolastaModTemplate/{file.Name}";
+                var filename = Path.Combine(MOD_FOLDER, file.Name);
                 var code = file.Name.Substring(13, 2);
                 var languageSourceData = LocalizationManager.Sources[0];
                 var languageIndex = languageSourceData.GetLanguageIndexFromCode(code);
 
                 if (languageIndex < 0)
-                    Main.Error($"language {code} not currently loaded.");
+                    Error($"language {code} not currently loaded.");
                 else
                     using (var sr = new StreamReader(filename))
                     {
-                        String line;
+                        String line, term, text;
                         while ((line = sr.ReadLine()) != null)
                         {
-                            var splitted = line.Split(new[] { '\t', ' ' }, 2);
-                            var term = splitted[0];
-                            var text = splitted[1];
+                            try
+                            {
+                                var splitted = line.Split(new[] { '\t', ' ' }, 2);
+                                term = splitted[0];
+                                text = splitted[1];
+                            } catch
+                            {
+                                Error($"invalid translation line \"{line}\".");
+                                continue;
+                            }
+                            if (languageSourceData.ContainsTerm(term))
+                            {
+                                languageSourceData.RemoveTerm(term);
+                                Warning($"official game term {term} was overwritten with \"{text}\"");
+                            }
                             languageSourceData.AddTerm(term).Languages[languageIndex] = text;
                         }
                     }
