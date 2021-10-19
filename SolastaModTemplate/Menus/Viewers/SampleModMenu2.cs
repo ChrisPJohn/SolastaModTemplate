@@ -1,21 +1,23 @@
-﻿using UnityModManagerNet;
-using ModKit;
-using static SolastaModTemplate.Main;
+﻿//using UnityModManagerNet;
+//using ModKit;
 
-namespace SolastaModTemplate.Menus.Viewers
-{
-    public class SampleModMenu2 : IMenuSelectablePage
-    {
-        public string Name => "Sample Menu 2";
+//namespace SolastaModTemplate.Menus.Viewers
+//{
+//    public class SampleModMenu2 : IMenuSelectablePage
+//    {
+//        public string Name => "Sample Menu 2";
 
-        public int Priority => 1;
+//        public int Priority => 1;
 
-        public void OnGUI(UnityModManager.ModEntry modEntry)
-        {
-            if (Mod == null || !Mod.Enabled) return;
+//        public void OnGUI(UnityModManager.ModEntry modEntry)
+//        {
+//            bool toggle;
 
-            UI.Toggle("Toggle Me 3", ref Main.Settings.toggleTest3, 0, UI.AutoWidth());
-            UI.Toggle("Toggle Me 4", ref Main.Settings.toggleTest4, 0, UI.AutoWidth());
-        }
-    }
-}
+//            toggle = Main.Settings.toggleTest2;
+//            if (UI.Toggle("Toggle Me 2", ref toggle, 0, UI.AutoWidth()))
+//            {
+//                Main.Settings.toggleTest1 = toggle;
+//            }
+//        }
+//    }
+//}
