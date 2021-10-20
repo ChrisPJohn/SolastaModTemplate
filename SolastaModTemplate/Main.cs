@@ -30,8 +30,14 @@ namespace SolastaModTemplate
                 Logger = modEntry.Logger;
                 Mod = new ModManager<Core, Settings>();
                 Mod.Enable(modEntry, assembly);
-                Menu = new MenuManager();
-                Menu.Enable(modEntry, assembly);
+                
+                //
+                // UNCOMMENT LINES BELOW TO ENABLE MOD UI MENU. ALSO CHECK VIEWERS FOLDER FOR MOD UI SAMPLES
+                //
+
+                //Menu = new MenuManager();
+                //Menu.Enable(modEntry, assembly);
+                
                 Translations.Load(MOD_FOLDER);
             }
             catch (Exception ex)
