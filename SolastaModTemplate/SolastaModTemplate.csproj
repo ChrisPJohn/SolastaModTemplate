@@ -45,6 +45,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="ModKit" Version="1.0.8" />
 		<Reference Include="Unity.Addressables">
 			<HintPath>$([System.IO.Path]::Combine($(SolastaInstallDir), 'Solasta_Data\Managed\Unity.Addressables.dll'))</HintPath>
 			<Private>false</Private>
