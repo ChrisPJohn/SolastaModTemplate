@@ -3,6 +3,10 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# publicise files
+Assembly-CSharp_public.dll
+Assembly-CSharp_public.hash
+
 # User-specific files
 *.suo
 *.user
